@@ -1,8 +1,9 @@
 package grandcircus_javabootcamp;
 
+// Chose newer java.time.* from SE8 over java.util.Calendar for ease of use.
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.temporal.ChronoUnit;
+import java.time.Period;
 // import java.util.Scanner; to be implemented.
 
 /*
@@ -20,15 +21,11 @@ public class DatesCalc {
 		LocalDate dateOne = LocalDate.of(1978, Month.OCTOBER, 3);
 		LocalDate dateTwo = LocalDate.of(2018, Month.JULY, 7);
 
-		System.out.println(dateOne);
-		System.out.println(dateTwo);
+		System.out.println("Calculating between dates of " + dateOne + " and " + dateTwo + "...");
 
-		long year = ChronoUnit.YEARS.between(dateOne, dateTwo);
-		long month = ChronoUnit.MONTHS.between(dateOne, dateTwo);
-		long week = ChronoUnit.WEEKS.between(dateOne, dateTwo);
-		long day = ChronoUnit.DAYS.between(dateOne, dateTwo);
+		Period period = Period.between(dateOne, dateTwo);
 
-		System.out.println("That is a difference of " + year + " years, " + month + " months, " + week + " weeks, and "
-				+ day + " days."); // FIXME remainder months and days after year, not 'or' of each unit's total.
+		System.out.println("That is a difference of " + period.getYears() + " years, " + period.getMonths()
+				+ " months, and " + period.getDays() + " days.");
 	}
 }
